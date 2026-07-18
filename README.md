@@ -88,7 +88,7 @@ The dataset consists of **2,128 images** balanced across splits:
 Three deep learning models were trained and benchmarked on the shared validation split:
 1.  **Custom CNN**: A flat convolutional neural network trained specifically on chest scans from scratch.
 2.  **MobileNetV2**: Parameter-efficient transfer learning model.
-3.  **EfficientNetB0**: State-of-the-art CNN architecture leveraging ImageNet transfer learning.
+3.  **EfficientNetB0**: A pretrained EfficientNetB0 transfer learning baseline.
 
 ### Benchmark Results:
 
