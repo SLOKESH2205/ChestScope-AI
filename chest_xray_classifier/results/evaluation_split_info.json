@@ -1,0 +1,16 @@
+{
+  "evaluation_source": "dataset/validation",
+  "evaluation_dir": "D:\\PROJECTS\\VS CODE\\LUNG DISEASE\\chest_xray_classifier\\dataset\\validation",
+  "classes": [
+    "Bacterial Pneumonia",
+    "Covid-19",
+    "Normal",
+    "Viral Pneumonia"
+  ],
+  "image_size": [
+    224,
+    224
+  ],
+  "preprocessing": "rescale=1/255",
+  "note": "dataset/test is empty, so dataset/validation is used as the common evaluator split."
+}

@@ -1,0 +1,44 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE config
+.vscode/
+.idea/
+
+# Local logs and temporary outputs
+logs/
+outputs/
+tmp/
+temp_images/
+
+# Datasets
+chest_xray_classifier/dataset/
+dataset/
+
+# Large Model weights (exceeding 100MB GitHub limit)
+chest_xray_classifier/models/
+models/
+*.h5
+*.keras
+
+# Secrets and local configurations
+.env
+.streamlit/secrets.toml
+predictions.db
