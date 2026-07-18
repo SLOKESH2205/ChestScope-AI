@@ -1,5 +1,8 @@
 # Model files (too large for git - use Git LFS or download separately)
 model/*.keras
+!model/chest_xray_model.keras
+!model/efficientnet_model.keras
+!model/mobilenetv2_model.keras
 
 # Uploaded images (user data - should not be committed)
 uploads/*

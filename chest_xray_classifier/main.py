@@ -38,15 +38,100 @@ from chest_xray_classifier.config.config import (
 from chest_xray_classifier.data.loader import DataLoader
 from chest_xray_classifier.train.trainer import Trainer
 from chest_xray_classifier.evaluate.evaluator import Evaluator
-from chest_xray_classifier.predict.predictor import Predictor
-from chest_xray_classifier.predict.logger import PredictionLogger
+from chest_xray_classifier.predict import run_single_inference, CONFIDENCE_THRESHOLD
+
+class Predictor:
+    def __init__(self, model, enable_uncertainty=True):
+        self.model = model
+        self.enable_uncertainty = enable_uncertainty
+        self.confidence_threshold = CONFIDENCE_THRESHOLD
+
+    def predict_single(self, image_path, include_uncertainty=True):
+        res = run_single_inference(
+            self.model,
+            image_path,
+            model_name="Custom CNN",
+            confidence_threshold=self.confidence_threshold
+        )
+        res["image_path"] = str(image_path)
+        return res
+
+    def format_to_ascii_card(self, res):
+        lines = []
+        lines.append("+" + "-"*65 + "+")
+        lines.append(f"| CHEST X-RAY AI CLINICAL PREDICTION CARD{' ':24}|")
+        lines.append("+" + "-"*65 + "+")
+        lines.append(f"| Filename: {res['filename']:52} |")
+        lines.append(f"| Model: {res['model_name']:55} |")
+        lines.append(f"| Prediction: {res['prediction']:50} |")
+        lines.append(f"| Confidence: {res['confidence']:.2%} ({'Acceptable' if not res['requires_review'] else 'Clinical Review Required'}){' ':8} |")
+        lines.append(f"| Uncertainty (Entropy): {res['uncertainty']:.2%}{' ':35} |")
+        lines.append(f"| Inference Latency: {res['inference_ms']:.1f} ms{' ':36} |")
+        lines.append("+" + "-"*65 + "+")
+        lines.append("| Probabilities:                                                  |")
+        for cls, prob in res['probabilities'].items():
+            bar_len = int(prob * 20)
+            bar = "#" * bar_len + " " * (20 - bar_len)
+            lines.append(f"|   {cls:25}: {prob:7.2%} [{bar}] {' ':12} |")
+        lines.append("+" + "-"*65 + "+")
+        return "\n".join(lines)
+
+
+class PredictionLogger:
+    def log_prediction(self, res, model_name='cnn', inference_time_ms=None):
+        from chest_xray_classifier.utils.portfolio import save_prediction_log
+        save_prediction_log(
+            model_name=res.get("model_name", model_name),
+            filename=res["filename"],
+            prediction=res["prediction"],
+            confidence=res["confidence"],
+            uncertainty=res["uncertainty"],
+            inference_ms=inference_time_ms or res["inference_ms"]
+        )
+        return "Saved"
+
+    def get_statistics(self):
+        from chest_xray_classifier.utils.portfolio import load_prediction_history
+        df = load_prediction_history()
+        if df.empty:
+            return {
+                "total_predictions": 0,
+                "avg_confidence": 0.0,
+                "class_distribution": {}
+            }
+        class_counts = df['prediction'].value_counts().to_dict()
+        return {
+            "total_predictions": len(df),
+            "avg_confidence": float(df['confidence'].mean()),
+            "class_distribution": class_counts
+        }
+
+    def export_csv(self, export_path):
+        from chest_xray_classifier.utils.portfolio import load_prediction_history
+        df = load_prediction_history()
+        df.to_csv(export_path, index=False)
+        return export_path
 from chest_xray_classifier.explain.gradcam import GradCAM
 from chest_xray_classifier.explain.shap_explain import SHAPExplainer
 from chest_xray_classifier.explain.uncertainty import MCDropoutUncertainty
 from chest_xray_classifier.visualize.plots import (
     plot_training_history, plot_confusion_matrix, plot_roc_curves
 )
-from chest_xray_classifier.report.pdf_report import generate_simple_report
+def generate_simple_report(res):
+    from chest_xray_classifier.app.report.pdf_generator import generate_clinical_pdf
+    pdf_bytes = generate_clinical_pdf(
+        image_path=res["image_path"],
+        gradcam_path=None,
+        prediction=res["prediction"],
+        confidence=res["confidence"],
+        uncertainty=res["uncertainty"],
+        model_name=res["model_name"],
+        inference_ms=res["inference_ms"],
+        threshold=CONFIDENCE_THRESHOLD
+    )
+    report_path = Path("outputs") / f"report_{Path(res['image_path']).stem}.pdf"
+    report_path.write_bytes(pdf_bytes)
+    return report_path
 
 # Setup logging
 log_dir = Path(LOG_DIR)

@@ -40,6 +40,17 @@ models/
 *.h5
 *.keras
 
+# Un-ignore specific lightweight model weights so they are tracked by git
+!models/custom_cnn.h5
+!models/efficientnetb0.h5
+!models/mobilenetv2.h5
+!chest_xray_classifier/models/custom_cnn.h5
+!chest_xray_classifier/models/efficientnetb0.h5
+!chest_xray_classifier/models/mobilenetv2.h5
+!chest_xray_classifier/model/chest_xray_model.keras
+!chest_xray_classifier/model/efficientnet_model.keras
+!chest_xray_classifier/model/mobilenetv2_model.keras
+
 # Secrets and local configurations
 .env
 .streamlit/secrets.toml

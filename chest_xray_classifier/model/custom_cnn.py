@@ -50,85 +50,36 @@ def build_custom_cnn(
         # Input layer
         layers.Input(shape=input_shape),
         
-        # Block 1: Conv -> Conv -> Pool -> Dropout
+        # Block 1: Conv -> Pool
         layers.Conv2D(
-            32, (3, 3), padding='same',
+            32, (3, 3), activation='relu',
             kernel_regularizer=regularizers.l2(l2_factor)
         ),
-        layers.BatchNormalization(),
-        layers.Activation('relu'),
-        
-        layers.Conv2D(
-            32, (3, 3), padding='same',
-            kernel_regularizer=regularizers.l2(l2_factor)
-        ),
-        layers.BatchNormalization(),
-        layers.Activation('relu'),
         layers.MaxPooling2D((2, 2)),
-        layers.Dropout(dropout_rate),
         
-        # Block 2: Conv -> Conv -> Pool -> Dropout
+        # Block 2: Conv -> Pool
         layers.Conv2D(
-            64, (3, 3), padding='same',
+            64, (3, 3), activation='relu',
             kernel_regularizer=regularizers.l2(l2_factor)
         ),
-        layers.BatchNormalization(),
-        layers.Activation('relu'),
-        
-        layers.Conv2D(
-            64, (3, 3), padding='same',
-            kernel_regularizer=regularizers.l2(l2_factor)
-        ),
-        layers.BatchNormalization(),
-        layers.Activation('relu'),
         layers.MaxPooling2D((2, 2)),
-        layers.Dropout(dropout_rate),
         
-        # Block 3: Conv -> Conv -> Pool -> Dropout
+        # Block 3: Conv -> Pool
         layers.Conv2D(
-            128, (3, 3), padding='same',
+            128, (3, 3), activation='relu',
             kernel_regularizer=regularizers.l2(l2_factor)
         ),
-        layers.BatchNormalization(),
-        layers.Activation('relu'),
-        
-        layers.Conv2D(
-            128, (3, 3), padding='same',
-            kernel_regularizer=regularizers.l2(l2_factor)
-        ),
-        layers.BatchNormalization(),
-        layers.Activation('relu'),
         layers.MaxPooling2D((2, 2)),
-        layers.Dropout(dropout_rate),
-        
-        # Block 4: Conv -> Conv -> Pool -> Dropout
-        layers.Conv2D(
-            256, (3, 3), padding='same',
-            kernel_regularizer=regularizers.l2(l2_factor)
-        ),
-        layers.BatchNormalization(),
-        layers.Activation('relu'),
-        
-        layers.Conv2D(
-            256, (3, 3), padding='same',
-            kernel_regularizer=regularizers.l2(l2_factor)
-        ),
-        layers.BatchNormalization(),
-        layers.Activation('relu'),
-        layers.MaxPooling2D((2, 2)),
-        layers.Dropout(dropout_rate),
         
         # Head: Global Average Pooling
         layers.GlobalAveragePooling2D(),
         
         # Dense layers
-        layers.Dense(512, kernel_regularizer=regularizers.l2(l2_factor)),
-        layers.BatchNormalization(),
-        layers.Activation('relu'),
+        layers.Dense(512, activation='relu', kernel_regularizer=regularizers.l2(l2_factor), name='dense_proj'),
         layers.Dropout(dropout_rate),
         
         # Output layer
-        layers.Dense(num_classes, activation='softmax')
+        layers.Dense(num_classes, activation='softmax', name='dense_clf')
     ], name='custom_cnn')
     
     logger.info(f"Custom CNN model built successfully")

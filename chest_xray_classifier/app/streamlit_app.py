@@ -30,16 +30,10 @@ logger = logging.getLogger("streamlit_app")
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 OUTPUTS_DIR = PROJECT_ROOT / "outputs"
-MODELS_DIR = PROJECT_ROOT / "chest_xray_classifier" / "models"
 
-# Available model files check
-AVAILABLE_MODELS = []
-if (MODELS_DIR / "custom_cnn.h5").exists():
-    AVAILABLE_MODELS.append("Custom CNN")
-if (MODELS_DIR / "efficientnetb0.h5").exists():
-    AVAILABLE_MODELS.append("EfficientNetB0")
-if (MODELS_DIR / "mobilenetv2.h5").exists():
-    AVAILABLE_MODELS.append("MobileNetV2")
+from chest_xray_classifier.utils.model_loader import get_available_model_names
+
+AVAILABLE_MODELS = get_available_model_names()
 
 def apply_custom_styles() -> None:
     """Inject modern Glassmorphism styling and fonts into Streamlit."""

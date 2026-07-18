@@ -61,6 +61,22 @@ def init_sqlite_db() -> None:
             )
             """
         )
+        
+        # Schema migration checks for existing tables
+        cursor.execute("PRAGMA table_info(predictions)")
+        columns = [info[1] for info in cursor.fetchall()]
+        
+        if "image_path" in columns and "filename" not in columns:
+            cursor.execute("ALTER TABLE predictions RENAME COLUMN image_path TO filename")
+        if "predicted_class" in columns and "prediction" not in columns:
+            cursor.execute("ALTER TABLE predictions RENAME COLUMN predicted_class TO prediction")
+        if "inference_time_ms" in columns and "inference_ms" not in columns:
+            cursor.execute("ALTER TABLE predictions RENAME COLUMN inference_time_ms TO inference_ms")
+        if "model" not in columns:
+            cursor.execute("ALTER TABLE predictions ADD COLUMN model TEXT DEFAULT 'Custom CNN'")
+        if "uncertainty" not in columns:
+            cursor.execute("ALTER TABLE predictions ADD COLUMN uncertainty REAL DEFAULT 0.0")
+            
         conn.commit()
         conn.close()
     except Exception as exc:

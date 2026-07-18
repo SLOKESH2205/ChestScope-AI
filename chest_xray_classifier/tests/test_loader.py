@@ -45,7 +45,7 @@ class TestDataLoader:
         train_gen = loader.get_train_generator()
         batch_x, batch_y = next(iter(train_gen))
         
-        assert batch_x.shape[1:] == IMG_SIZE  # (batch, H, W, C)
+        assert batch_x.shape[1:3] == IMG_SIZE  # (batch, H, W, C)
         assert len(batch_y.shape) == 2  # (batch, num_classes)
         assert batch_y.shape[1] == len(CLASSES)
     

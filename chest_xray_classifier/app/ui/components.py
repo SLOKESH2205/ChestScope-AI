@@ -17,7 +17,7 @@ from PIL import Image
 
 from chest_xray_classifier.config.config import CLASSES, VAL_DIR
 from chest_xray_classifier.preprocessing import validate_image, preprocess_image
-from chest_xray_classifier.app.model_loader.loader import load_prediction_model
+from chest_xray_classifier.utils.model_loader import load_single_model
 from chest_xray_classifier.app.prediction.inference import run_dashboard_inference
 from chest_xray_classifier.app.visualization.charts import plot_probability_bar_chart, plot_preprocessed_preview
 from chest_xray_classifier.explainability import (
@@ -100,11 +100,10 @@ def render_diagnosis_tab(available_models: list[str]) -> None:
     threshold = st.slider("Clinical Confidence Threshold", 0.50, 0.90, 0.60, 0.05, format="%.0f%%")
     
     selected_model = st.selectbox("Select Active Model", available_models, key="active_model")
-    model_path = PROJECT_ROOT / "chest_xray_classifier" / "models" / f"{selected_model.lower().replace(' ', '_')}.h5"
-    model = load_prediction_model(model_path)
-    
-    if model is None:
-        st.error("Active model weights could not be loaded.")
+    try:
+        model = load_single_model(selected_model)
+    except Exception as e:
+        st.error(f"Active model weights could not be loaded: {e}")
         return
         
     if mode == "Single X-Ray Analysis":
@@ -354,8 +353,11 @@ def render_xai_tab(available_models: list[str]) -> None:
         return
         
     selected_xai_model = st.selectbox("Select Model for Visual Attribution", available_models, key="xai_model_select")
-    model_path = PROJECT_ROOT / "chest_xray_classifier" / "models" / f"{selected_xai_model.lower().replace(' ', '_')}.h5"
-    model = load_prediction_model(model_path)
+    try:
+        model = load_single_model(selected_xai_model)
+    except Exception as e:
+        st.error(f"Active model weights could not be loaded: {e}")
+        return
     
     uploaded_xai = st.file_uploader("Upload Chest X-Ray for Interpretability", type=["png", "jpg", "jpeg"], key="xai_uploader")
     
