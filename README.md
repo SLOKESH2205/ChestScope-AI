@@ -12,9 +12,35 @@
 
 ---
 
+## 📈 Project Statistics
+
+*   **Language:** Python 3.13
+*   **Deep Learning Framework:** TensorFlow 2.21 / Keras 3
+*   **Benchmarked Models:** 3 (Custom CNN, MobileNetV2, EfficientNetB0)
+*   **Cohort Images:** 2,128 scans
+*   **Interactive Tabs:** 9 Workspace Panels
+*   **Automated Unit Tests:** 7 Pytest validations
+*   **Flagship Accuracy:** 82.33% (F1-Score: 82.35%)
+*   **Flagship ROC-AUC:** 94.81% (MobileNetV2: 95.74%)
+
+---
+
+## ✨ Highlights
+
+- **Multi-model Benchmarking**: Custom CNN, MobileNetV2, and EfficientNetB0 evaluated side-by-side.
+- **Explainable AI (XAI)**: Visualizes localized lung features using **Grad-CAM**, **Grad-CAM++**, and **Integrated Gradients**.
+- **Clinical PDF Report Generation**: Automatically compiles diagnostic summary reports containing attributions and clinical suggestions.
+- **Batch Prediction Support**: Process multiple patient scans simultaneously with progress indicators and export combined PDFs/CSVs.
+- **Scientific Error Analysis**: Profiles misclassification edge cases in an interactive gallery to debug model boundaries.
+- **Monte Carlo Uncertainty Estimation**: Employs 15 forward passes to compute Shannon Entropy and warn clinicians of low-confidence scans.
+- **Interactive Streamlit Dashboard**: Seamless clinical decision-support workspace.
+- **7 Automated Unit Tests**: Complete coverage checking pipeline validation, QA, and model factories.
+
+---
+
 ## 🚀 Repository Overview
 
-ChestScope-AI is a production-grade, end-to-end medical decision-support workspace. It leverages Deep Learning (CNNs) to classify Chest X-Ray scans into standard respiratory diseases, quantifies prediction uncertainty, and generates saliency attribution maps for medical transparency.
+ChestScope-AI is a production-grade medical decision-support workspace. It leverages Deep Learning (CNNs) to classify Chest X-Ray scans into standard respiratory diseases, quantifies prediction uncertainty, and generates saliency attribution maps for medical transparency.
 
 ---
 
@@ -31,53 +57,25 @@ Building deep learning models that clinicians trust requires more than just high
 
 ---
 
-## ✨ Key Features
+## ⚙️ Workflow Diagram
 
-*   **Clinical Diagnostics Workspace**: Multi-model diagnostic mode with custom confidence threshold controls.
-*   **Monte Carlo (MC) Dropout**: Generates 15 forward inference passes to quantify Shannon Entropy uncertainty.
-*   **Explainable AI (XAI)**: Generates Grad-CAM, Grad-CAM++, and Integrated Gradients heatmaps.
-*   **Batch Prediction Mode**: Upload multiple scans, run batch diagnostics, and export CSV logs or combined clinical PDF reports.
-*   **Misclassification Analyst**: Interactive gallery of worst-confidence mistakes.
-*   **Automated clinical PDF Export**: Generates clinical-style reports containing image overlays, inference latency, and recommendations.
-
----
-
-## 🧠 Architecture & Workflow Diagrams
-
-### Workspace Architecture:
-```
-+-----------------------------------------------------------------------------------+
-|                              Streamlit Dashboard UI                               |
-+-----------------------------------------------------------------------------------+
-        |                           |                          |
-        v                           v                          v
-+---------------+           +---------------+          +---------------------------+
-| Preprocessing |           |   Inference   |          |      Explainable AI       |
-| (Image QA)    |           |  (MC Dropout) |          | (Grad-CAM, IG attributions)|
-+---------------+           +---------------+          +---------------------------+
-        |                           |                          |
-        +---------------------------+--------------------------+
-                                    |
-                                    v
-                        +-----------------------+
-                        |  Clinical PDF Export  |
-                        +-----------------------+
-```
-
-### End-to-End Workflow:
-```
-Upload Image ➔ Preprocess (QA Checks) ➔ Run MC Inference ➔ Generate Attributions ➔ Export PDF Report
+```mermaid
+flowchart LR
+A[Upload X-ray] --> B[Preprocessing]
+B --> C[Prediction]
+C --> D[Explainability]
+D --> E[Clinical PDF]
 ```
 
 ---
 
 ## 📁 Dataset & Preprocessing Pipeline
 
-### Cohort Distribution:
-The dataset consists of **2,128 images** perfectly balanced across the splits:
+### Cohort Distribution & Validation Methodology:
+The dataset consists of **2,128 images** balanced across splits:
 *   **Training Set**: 532 images
 *   **Validation Set**: 532 images
-*   **Test Set**: 0 images (cohort holdout validation split)
+*   **Evaluation Methodology**: Rather than testing on a shifting test split, the pipeline evaluates all architectures on a strict, leakage-free **holdout validation cohort**. This provides a stable benchmark to test feature attributions and prevent overfitting.
 
 ### Preprocessing Pipeline:
 1.  **Quality Assurance (QA)**: Validates file headers, filters empty/corrupt files, and checks resolution limits (> 64x64).
@@ -106,6 +104,9 @@ Three deep learning models were trained and benchmarked on the shared validation
 | **Matthews Correlation (MCC)** | **0.765** | 0.750 | 0.711 |
 | **Avg Inference Time** | **16.90 ms** | 24.09 ms | 27.58 ms |
 | **Model Size on Disk** | 508.14 MB | **23.72 MB** | 38.99 MB |
+
+> [!NOTE]
+> The repository does not include the optimizer state. The large size (508.14 MB) reported in the analysis refers to a training checkpoint that included Adam optimizer variables.
 
 ### Why Custom CNN was Selected:
 *   Achieved the highest overall validation metrics (Weighted F1: **82.35%**, Accuracy: **82.33%**).
@@ -144,9 +145,6 @@ Three deep learning models were trained and benchmarked on the shared validation
 ---
 
 ## 🖥️ Dashboard Features
-
-Placeholders for screenshots:
-`[assets/screenshots/dashboard_home.png]`, `[assets/screenshots/dashboard_diagnosis.png]`, `[assets/screenshots/dashboard_xai.png]`
 
 *   **🏠 Home**: System stats, selected best model metrics, and cohort datasets summaries.
 *   **🩺 Diagnosis**: Single/Batch uploading, confidence threshold slider, progress animations, and PDF exports.
@@ -247,4 +245,4 @@ This project is licensed under the MIT License.
 
 ---
 
-*If this project helped you, consider giving it a ⭐.*
+*If this project helped you, consider giving it a ⭐ on GitHub.*
