@@ -29,7 +29,7 @@ def setup_project_directories() -> None:
         Path(RESULTS_DIR) / "confusion_matrices",
         Path(RESULTS_DIR) / "model_metrics",
         Path(RESULTS_DIR) / "heatmap_examples",
-        Path("outputs"),
+        Path(__file__).resolve().parents[2] / "outputs",
     ]
     for directory in dirs:
         directory.mkdir(parents=True, exist_ok=True)

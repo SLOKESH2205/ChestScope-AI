@@ -218,7 +218,8 @@ def generate_batch_pdf(
         
         # Embed original image
         img_y = pdf.get_y()
-        img_p = str(Path("outputs") / f"diag_{res['filename']}").resolve()
+        project_root = Path(__file__).resolve().parents[3]
+        img_p = str(project_root / "outputs" / f"diag_{res['filename']}")
         
         try:
             if Path(img_p).exists():

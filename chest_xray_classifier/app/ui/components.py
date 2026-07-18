@@ -26,7 +26,8 @@ from chest_xray_classifier.explainability import (
 from chest_xray_classifier.app.report.pdf_generator import generate_clinical_pdf, generate_batch_pdf
 
 logger = logging.getLogger(__name__)
-OUTPUTS_DIR = Path("outputs")
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+OUTPUTS_DIR = PROJECT_ROOT / "outputs"
 
 def render_home_tab(dataset_report: dict | None, final_metrics: dict | None) -> None:
     """Render the Home Landing Tab."""
@@ -99,7 +100,7 @@ def render_diagnosis_tab(available_models: list[str]) -> None:
     threshold = st.slider("Clinical Confidence Threshold", 0.50, 0.90, 0.60, 0.05, format="%.0f%%")
     
     selected_model = st.selectbox("Select Active Model", available_models, key="active_model")
-    model_path = Path("chest_xray_classifier") / "models" / f"{selected_model.lower().replace(' ', '_')}.h5"
+    model_path = PROJECT_ROOT / "chest_xray_classifier" / "models" / f"{selected_model.lower().replace(' ', '_')}.h5"
     model = load_prediction_model(model_path)
     
     if model is None:
@@ -117,7 +118,7 @@ def render_diagnosis_tab(available_models: list[str]) -> None:
         with col_main:
             if uploaded_file:
                 # 1. Validation & Error Handling
-                temp_path = Path("outputs") / f"diag_{uploaded_file.name}"
+                temp_path = OUTPUTS_DIR / f"diag_{uploaded_file.name}"
                 temp_path.write_bytes(uploaded_file.read())
                 
                 is_valid, msg = validate_image(temp_path)
@@ -148,7 +149,7 @@ def render_diagnosis_tab(available_models: list[str]) -> None:
                         layer_name = get_last_conv_layer(model)
                         gcam = compute_gradcam(model, result["preprocessed_tensor"], CLASSES.index(result["prediction"]), layer_name)
                         gcam_overlay = overlay_heatmap(result["preprocessed_tensor"], gcam)
-                        overlay_temp_path = Path("outputs") / f"overlay_temp_{uploaded_file.name}"
+                        overlay_temp_path = OUTPUTS_DIR / f"overlay_temp_{uploaded_file.name}"
                         Image.fromarray(gcam_overlay).save(overlay_temp_path)
                         
                     time.sleep(0.2)
@@ -248,7 +249,7 @@ def render_diagnosis_tab(available_models: list[str]) -> None:
                 bar = st.progress(0)
                 
                 for idx, file in enumerate(uploaded_files):
-                    temp_path = Path("outputs") / f"diag_{file.name}"
+                    temp_path = OUTPUTS_DIR / f"diag_{file.name}"
                     temp_path.write_bytes(file.read())
                     
                     # Validate
@@ -353,13 +354,13 @@ def render_xai_tab(available_models: list[str]) -> None:
         return
         
     selected_xai_model = st.selectbox("Select Model for Visual Attribution", available_models, key="xai_model_select")
-    model_path = Path("chest_xray_classifier") / "models" / f"{selected_xai_model.lower().replace(' ', '_')}.h5"
+    model_path = PROJECT_ROOT / "chest_xray_classifier" / "models" / f"{selected_xai_model.lower().replace(' ', '_')}.h5"
     model = load_prediction_model(model_path)
     
     uploaded_xai = st.file_uploader("Upload Chest X-Ray for Interpretability", type=["png", "jpg", "jpeg"], key="xai_uploader")
     
     if uploaded_xai and model:
-        temp_xai_path = Path("outputs") / f"xai_{uploaded_xai.name}"
+        temp_xai_path = OUTPUTS_DIR / f"xai_{uploaded_xai.name}"
         temp_xai_path.write_bytes(uploaded_xai.read())
         
         # Preprocess

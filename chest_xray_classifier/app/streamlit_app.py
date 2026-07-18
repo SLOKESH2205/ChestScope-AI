@@ -28,8 +28,9 @@ from chest_xray_classifier.app.ui.components import (
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger("streamlit_app")
 
-OUTPUTS_DIR = Path("outputs")
-MODELS_DIR = Path("chest_xray_classifier") / "models"
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+OUTPUTS_DIR = PROJECT_ROOT / "outputs"
+MODELS_DIR = PROJECT_ROOT / "chest_xray_classifier" / "models"
 
 # Available model files check
 AVAILABLE_MODELS = []
