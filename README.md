@@ -12,6 +12,16 @@
 
 ---
 
+## 🖥️ Live Demo & Repository Link
+
+### 🔗 Live Demo:
+https://chestscope-ai.streamlit.app/
+
+### 🔗 GitHub Repository:
+[https://github.com/SLOKESH2205/ChestScope-AI.git](https://github.com/SLOKESH2205/ChestScope-AI.git)
+
+---
+
 ## 📈 Project Statistics
 
 *   **Language:** Python 3.13
@@ -152,16 +162,6 @@ Three deep learning models were trained and benchmarked on the shared validation
 *   **📈 Performance**: High-resolution Confusion Matrices and ROC curves.
 *   **🔥 Explainability**: Live Grad-CAM, Grad-CAM++, and Integrated Gradients overlays.
 *   **⚠ Error Analysis**: Galleries of worst-confidence mistakes.
-
----
-
-## 🖥️ Live Demo & Repository Link
-
-### 🔗 Live Demo:
-[Coming Soon - Live URL to be added after deployment]
-
-### 🔗 GitHub Repository:
-[https://github.com/SLOKESH2205/ChestScope-AI.git](https://github.com/SLOKESH2205/ChestScope-AI.git)
 
 ---
 
