@@ -348,6 +348,10 @@ def render_xai_tab(available_models: list[str]) -> None:
         icon="⚠️"
     )
     
+    if not available_models:
+        st.error("No trained models found in the workspace directory. Model weights (.h5) must be present in chest_xray_classifier/models/.")
+        return
+        
     selected_xai_model = st.selectbox("Select Model for Visual Attribution", available_models, key="xai_model_select")
     model_path = Path("chest_xray_classifier") / "models" / f"{selected_xai_model.lower().replace(' ', '_')}.h5"
     model = load_prediction_model(model_path)
