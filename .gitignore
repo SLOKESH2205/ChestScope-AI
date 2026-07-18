@@ -26,6 +26,7 @@ desktop.ini
 logs/
 outputs/diag_*
 outputs/overlay_temp_*
+outputs/xai_*
 tmp/
 temp_images/
 
