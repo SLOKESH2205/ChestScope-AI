@@ -165,13 +165,14 @@ def generate_misclassified_gallery(
             continue
             
         entry = worst_predictions[idx]
-        image_file = dataset_dir / entry["actual"] / entry["filename"]
+        entry_fn = Path(entry["filename"]).name
+        image_file = dataset_dir / entry["actual"] / entry_fn
         
         # Fallback if image file doesn't exist under validation/class
         if not image_file.exists():
             # Check other splits
             for split in ('validation', 'train', 'test'):
-                alt_file = dataset_dir.parent / split / entry["actual"] / entry["filename"]
+                alt_file = dataset_dir.parent / split / entry["actual"] / entry_fn
                 if alt_file.exists():
                     image_file = alt_file
                     break
