@@ -24,7 +24,8 @@ desktop.ini
 
 # Local logs and temporary outputs
 logs/
-outputs/
+outputs/diag_*
+outputs/overlay_temp_*
 tmp/
 temp_images/
 

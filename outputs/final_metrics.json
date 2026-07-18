@@ -1,0 +1,211 @@
+{
+  "timestamp": "2026-07-18T12:07:44Z",
+  "dataset_summary": {
+    "validation_images": 532,
+    "classes": [
+      "Bacterial Pneumonia",
+      "Covid-19",
+      "Normal",
+      "Viral Pneumonia"
+    ]
+  },
+  "models": {
+    "custom_cnn": {
+      "metrics": {
+        "Accuracy": 0.8233082706766918,
+        "Precision": 0.826414325666219,
+        "Recall": 0.8233082706766918,
+        "F1 Score": 0.8234825950023231,
+        "ROC AUC": 0.9480609418282548,
+        "Specificity": 0.9411027568922306,
+        "Sensitivity": 0.8233082706766918,
+        "Balanced Accuracy": 0.8233082706766918,
+        "Matthews Correlation Coefficient": 0.7652948422097926,
+        "Avg Inference Time (ms/image)": 18.07705526316978,
+        "Model Size (MB)": 508.13755798339844
+      },
+      "per_class": {
+        "Bacterial Pneumonia": {
+          "precision": 0.8296296296296296,
+          "recall": 0.8421052631578947,
+          "f1_score": 0.835820895522388,
+          "specificity": 0.9423558897243107,
+          "sensitivity": 0.8421052631578947,
+          "support": 133
+        },
+        "Covid-19": {
+          "precision": 0.9477611940298507,
+          "recall": 0.9548872180451128,
+          "f1_score": 0.951310861423221,
+          "specificity": 0.9824561403508771,
+          "sensitivity": 0.9548872180451128,
+          "support": 133
+        },
+        "Normal": {
+          "precision": 0.8275862068965517,
+          "recall": 0.7218045112781954,
+          "f1_score": 0.7710843373493976,
+          "specificity": 0.949874686716792,
+          "sensitivity": 0.7218045112781954,
+          "support": 133
+        },
+        "Viral Pneumonia": {
+          "precision": 0.7006802721088435,
+          "recall": 0.7744360902255639,
+          "f1_score": 0.7357142857142858,
+          "specificity": 0.8897243107769424,
+          "sensitivity": 0.7744360902255639,
+          "support": 133
+        }
+      }
+    },
+    "efficientnetb0": {
+      "metrics": {
+        "Accuracy": 0.7800751879699248,
+        "Precision": 0.7837589470119505,
+        "Recall": 0.7800751879699248,
+        "F1 Score": 0.7747063939972708,
+        "ROC AUC": 0.9377767727589651,
+        "Specificity": 0.9266917293233082,
+        "Sensitivity": 0.7800751879699248,
+        "Balanced Accuracy": 0.7800751879699248,
+        "Matthews Correlation Coefficient": 0.7105359916801226,
+        "Avg Inference Time (ms/image)": 28.068172556341143,
+        "Model Size (MB)": 38.99049377441406
+      },
+      "per_class": {
+        "Bacterial Pneumonia": {
+          "precision": 0.8129496402877698,
+          "recall": 0.849624060150376,
+          "f1_score": 0.8308823529411765,
+          "specificity": 0.9348370927318296,
+          "sensitivity": 0.849624060150376,
+          "support": 133
+        },
+        "Covid-19": {
+          "precision": 0.8571428571428571,
+          "recall": 0.9924812030075187,
+          "f1_score": 0.9198606271777003,
+          "specificity": 0.9448621553884712,
+          "sensitivity": 0.9924812030075187,
+          "support": 133
+        },
+        "Normal": {
+          "precision": 0.8279569892473119,
+          "recall": 0.5789473684210527,
+          "f1_score": 0.6814159292035398,
+          "specificity": 0.9598997493734336,
+          "sensitivity": 0.5789473684210527,
+          "support": 133
+        },
+        "Viral Pneumonia": {
+          "precision": 0.636986301369863,
+          "recall": 0.6992481203007519,
+          "f1_score": 0.6666666666666666,
+          "specificity": 0.8671679197994987,
+          "sensitivity": 0.6992481203007519,
+          "support": 133
+        }
+      }
+    },
+    "mobilenetv2": {
+      "metrics": {
+        "Accuracy": 0.806390977443609,
+        "Precision": 0.8243755408880925,
+        "Recall": 0.806390977443609,
+        "F1 Score": 0.8021339156105122,
+        "ROC AUC": 0.9573746396065352,
+        "Specificity": 0.9354636591478696,
+        "Sensitivity": 0.8063909774436091,
+        "Balanced Accuracy": 0.8063909774436091,
+        "Matthews Correlation Coefficient": 0.7504633421136305,
+        "Avg Inference Time (ms/image)": 25.530344360918104,
+        "Model Size (MB)": 23.72093963623047
+      },
+      "per_class": {
+        "Bacterial Pneumonia": {
+          "precision": 0.8115942028985508,
+          "recall": 0.8421052631578947,
+          "f1_score": 0.8265682656826568,
+          "specificity": 0.9348370927318296,
+          "sensitivity": 0.8421052631578947,
+          "support": 133
+        },
+        "Covid-19": {
+          "precision": 0.967479674796748,
+          "recall": 0.8947368421052632,
+          "f1_score": 0.9296875,
+          "specificity": 0.9899749373433584,
+          "sensitivity": 0.8947368421052632,
+          "support": 133
+        },
+        "Normal": {
+          "precision": 0.6793478260869565,
+          "recall": 0.9398496240601504,
+          "f1_score": 0.7886435331230284,
+          "specificity": 0.8521303258145363,
+          "sensitivity": 0.9398496240601504,
+          "support": 133
+        },
+        "Viral Pneumonia": {
+          "precision": 0.8390804597701149,
+          "recall": 0.5488721804511278,
+          "f1_score": 0.6636363636363637,
+          "specificity": 0.9649122807017544,
+          "sensitivity": 0.5488721804511278,
+          "support": 133
+        }
+      }
+    }
+  },
+  "comparison_table": [
+    {
+      "Model": "Custom CNN",
+      "Accuracy": 0.8233082706766918,
+      "Precision": 0.826414325666219,
+      "Recall": 0.8233082706766918,
+      "F1 Score": 0.8234825950023231,
+      "ROC AUC": 0.9480609418282548,
+      "Specificity": 0.9411027568922306,
+      "Sensitivity": 0.8233082706766918,
+      "Balanced Accuracy": 0.8233082706766918,
+      "Matthews Correlation Coefficient": 0.7652948422097926,
+      "Avg Inference Time (ms/image)": 18.07705526316978,
+      "Model Size (MB)": 508.13755798339844
+    },
+    {
+      "Model": "EfficientNetB0",
+      "Accuracy": 0.7800751879699248,
+      "Precision": 0.7837589470119505,
+      "Recall": 0.7800751879699248,
+      "F1 Score": 0.7747063939972708,
+      "ROC AUC": 0.9377767727589651,
+      "Specificity": 0.9266917293233082,
+      "Sensitivity": 0.7800751879699248,
+      "Balanced Accuracy": 0.7800751879699248,
+      "Matthews Correlation Coefficient": 0.7105359916801226,
+      "Avg Inference Time (ms/image)": 28.068172556341143,
+      "Model Size (MB)": 38.99049377441406
+    },
+    {
+      "Model": "MobileNetV2",
+      "Accuracy": 0.806390977443609,
+      "Precision": 0.8243755408880925,
+      "Recall": 0.806390977443609,
+      "F1 Score": 0.8021339156105122,
+      "ROC AUC": 0.9573746396065352,
+      "Specificity": 0.9354636591478696,
+      "Sensitivity": 0.8063909774436091,
+      "Balanced Accuracy": 0.8063909774436091,
+      "Matthews Correlation Coefficient": 0.7504633421136305,
+      "Avg Inference Time (ms/image)": 25.530344360918104,
+      "Model Size (MB)": 23.72093963623047
+    }
+  ],
+  "best_model": {
+    "name": "Custom CNN",
+    "key": "custom_cnn",
+    "f1_score": 0.8234825950023231,
+    "accuracy": 0.8233082706766918
+  }
+}

@@ -1,0 +1,311 @@
+{
+  "model_name": "MobileNetV2",
+  "total_evaluated": 532,
+  "correct_count": 429,
+  "misclassified_count": 103,
+  "error_rate": 0.19360902255639098,
+  "worst_predictions": [
+    {
+      "index": 463,
+      "filename": "Viral Pneumonia\\person1_virus_9.jpeg",
+      "actual": "Viral Pneumonia",
+      "predicted": "Bacterial Pneumonia",
+      "is_correct": false,
+      "confidence": 0.8830212950706482,
+      "uncertainty": 0.3336918354034424,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.8830212950706482,
+        "Covid-19": 0.01702091470360756,
+        "Normal": 0.022420361638069153,
+        "Viral Pneumonia": 0.077537402510643
+      }
+    },
+    {
+      "index": 481,
+      "filename": "Viral Pneumonia\\person35_virus_80.jpeg",
+      "actual": "Viral Pneumonia",
+      "predicted": "Normal",
+      "is_correct": false,
+      "confidence": 0.8505440354347229,
+      "uncertainty": 0.36128032207489014,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.028949381783604622,
+        "Covid-19": 0.000963602215051651,
+        "Normal": 0.8505440354347229,
+        "Viral Pneumonia": 0.11954303830862045
+      }
+    },
+    {
+      "index": 457,
+      "filename": "Viral Pneumonia\\person1_virus_11.jpeg",
+      "actual": "Viral Pneumonia",
+      "predicted": "Bacterial Pneumonia",
+      "is_correct": false,
+      "confidence": 0.8454974293708801,
+      "uncertainty": 0.4085848033428192,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.8454974293708801,
+        "Covid-19": 0.025247246026992798,
+        "Normal": 0.027715178206562996,
+        "Viral Pneumonia": 0.10154012590646744
+      }
+    },
+    {
+      "index": 402,
+      "filename": "Viral Pneumonia\\person15_virus_46.jpeg",
+      "actual": "Viral Pneumonia",
+      "predicted": "Normal",
+      "is_correct": false,
+      "confidence": 0.8389639854431152,
+      "uncertainty": 0.4080910384654999,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.06550299376249313,
+        "Covid-19": 0.0036653890274465084,
+        "Normal": 0.8389639854431152,
+        "Viral Pneumonia": 0.0918676108121872
+      }
+    },
+    {
+      "index": 460,
+      "filename": "Viral Pneumonia\\person1_virus_6.jpeg",
+      "actual": "Viral Pneumonia",
+      "predicted": "Bacterial Pneumonia",
+      "is_correct": false,
+      "confidence": 0.8287757635116577,
+      "uncertainty": 0.45951026678085327,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.8287757635116577,
+        "Covid-19": 0.03609878942370415,
+        "Normal": 0.05420931801199913,
+        "Viral Pneumonia": 0.0809161514043808
+      }
+    },
+    {
+      "index": 92,
+      "filename": "Bacterial Pneumonia\\person83_bacteria_407.jpeg",
+      "actual": "Bacterial Pneumonia",
+      "predicted": "Normal",
+      "is_correct": false,
+      "confidence": 0.8279902935028076,
+      "uncertainty": 0.42558562755584717,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.07124511897563934,
+        "Covid-19": 0.003217103658244014,
+        "Normal": 0.8279902935028076,
+        "Viral Pneumonia": 0.0975475162267685
+      }
+    },
+    {
+      "index": 458,
+      "filename": "Viral Pneumonia\\person1_virus_12.jpeg",
+      "actual": "Viral Pneumonia",
+      "predicted": "Bacterial Pneumonia",
+      "is_correct": false,
+      "confidence": 0.7972701787948608,
+      "uncertainty": 0.46731460094451904,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.7972701787948608,
+        "Covid-19": 0.022517485544085503,
+        "Normal": 0.02522457391023636,
+        "Viral Pneumonia": 0.15498782694339752
+      }
+    },
+    {
+      "index": 41,
+      "filename": "Bacterial Pneumonia\\person113_bacteria_543.jpeg",
+      "actual": "Bacterial Pneumonia",
+      "predicted": "Normal",
+      "is_correct": false,
+      "confidence": 0.7896544933319092,
+      "uncertainty": 0.4822302460670471,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.08438976854085922,
+        "Covid-19": 0.002540731569752097,
+        "Normal": 0.7896544933319092,
+        "Viral Pneumonia": 0.1234150156378746
+      }
+    },
+    {
+      "index": 462,
+      "filename": "Viral Pneumonia\\person1_virus_8.jpeg",
+      "actual": "Viral Pneumonia",
+      "predicted": "Bacterial Pneumonia",
+      "is_correct": false,
+      "confidence": 0.7776041030883789,
+      "uncertainty": 0.5118427276611328,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.7776041030883789,
+        "Covid-19": 0.00806798692792654,
+        "Normal": 0.08758432418107986,
+        "Viral Pneumonia": 0.1267436146736145
+      }
+    },
+    {
+      "index": 53,
+      "filename": "Bacterial Pneumonia\\person119_bacteria_568.jpeg",
+      "actual": "Bacterial Pneumonia",
+      "predicted": "Normal",
+      "is_correct": false,
+      "confidence": 0.758191704750061,
+      "uncertainty": 0.5254150629043579,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.09825561195611954,
+        "Covid-19": 0.002322983229532838,
+        "Normal": 0.758191704750061,
+        "Viral Pneumonia": 0.14122968912124634
+      }
+    }
+  ],
+  "most_uncertain_predictions": [
+    {
+      "index": 247,
+      "filename": "Covid-19\\kjr-21-e25-g001-l-a.jpg",
+      "actual": "Covid-19",
+      "predicted": "Bacterial Pneumonia",
+      "is_correct": false,
+      "confidence": 0.3231657147407532,
+      "uncertainty": 0.9886263608932495,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.3231657147407532,
+        "Covid-19": 0.2015516310930252,
+        "Normal": 0.24639452993869781,
+        "Viral Pneumonia": 0.2288881242275238
+      }
+    },
+    {
+      "index": 259,
+      "filename": "Covid-19\\nejmoa2001191_f5-PA.jpeg",
+      "actual": "Covid-19",
+      "predicted": "Bacterial Pneumonia",
+      "is_correct": false,
+      "confidence": 0.3352179229259491,
+      "uncertainty": 0.9815710783004761,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.3352179229259491,
+        "Covid-19": 0.18493375182151794,
+        "Normal": 0.2654106020927429,
+        "Viral Pneumonia": 0.21443767845630646
+      }
+    },
+    {
+      "index": 182,
+      "filename": "Covid-19\\7C69C012-7479-493F-8722-ABC29C60A2DD.jpeg",
+      "actual": "Covid-19",
+      "predicted": "Covid-19",
+      "is_correct": true,
+      "confidence": 0.3442365527153015,
+      "uncertainty": 0.9721568822860718,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.20185603201389313,
+        "Covid-19": 0.3442365527153015,
+        "Normal": 0.28604885935783386,
+        "Viral Pneumonia": 0.1678585261106491
+      }
+    },
+    {
+      "index": 213,
+      "filename": "Covid-19\\auntminnie-c-2020_01_28_23_51_6665_2020_01_28_Vietnam_coronavirus.jpeg",
+      "actual": "Covid-19",
+      "predicted": "Covid-19",
+      "is_correct": true,
+      "confidence": 0.34313565492630005,
+      "uncertainty": 0.970698893070221,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.16605782508850098,
+        "Covid-19": 0.34313565492630005,
+        "Normal": 0.1985313892364502,
+        "Viral Pneumonia": 0.292275071144104
+      }
+    },
+    {
+      "index": 195,
+      "filename": "Covid-19\\CD50BA96-6982-4C80-AE7B-5F67ACDBFA56.jpeg",
+      "actual": "Covid-19",
+      "predicted": "Bacterial Pneumonia",
+      "is_correct": false,
+      "confidence": 0.34604379534721375,
+      "uncertainty": 0.9688349962234497,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.34604379534721375,
+        "Covid-19": 0.27606725692749023,
+        "Normal": 0.23031918704509735,
+        "Viral Pneumonia": 0.14756982028484344
+      }
+    },
+    {
+      "index": 202,
+      "filename": "Covid-19\\F4341CE7-73C9-45C6-99C8-8567A5484B63.jpeg",
+      "actual": "Covid-19",
+      "predicted": "Bacterial Pneumonia",
+      "is_correct": false,
+      "confidence": 0.3384614884853363,
+      "uncertainty": 0.9649176001548767,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.3384614884853363,
+        "Covid-19": 0.2575030028820038,
+        "Normal": 0.27176809310913086,
+        "Viral Pneumonia": 0.13226741552352905
+      }
+    },
+    {
+      "index": 200,
+      "filename": "Covid-19\\E63574A7-4188-4C8D-8D17-9D67A18A1AFA.jpeg",
+      "actual": "Covid-19",
+      "predicted": "Bacterial Pneumonia",
+      "is_correct": false,
+      "confidence": 0.35521969199180603,
+      "uncertainty": 0.9646841287612915,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.35521969199180603,
+        "Covid-19": 0.21470728516578674,
+        "Normal": 0.28268203139305115,
+        "Viral Pneumonia": 0.14739103615283966
+      }
+    },
+    {
+      "index": 211,
+      "filename": "Covid-19\\auntminnie-a-2020_01_28_23_51_6665_2020_01_28_Vietnam_coronavirus.jpeg",
+      "actual": "Covid-19",
+      "predicted": "Viral Pneumonia",
+      "is_correct": false,
+      "confidence": 0.3381889760494232,
+      "uncertainty": 0.9589530229568481,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.22234851121902466,
+        "Covid-19": 0.30918821692466736,
+        "Normal": 0.13027426600456238,
+        "Viral Pneumonia": 0.3381889760494232
+      }
+    },
+    {
+      "index": 231,
+      "filename": "Covid-19\\gr1_lrg-b.jpg",
+      "actual": "Covid-19",
+      "predicted": "Covid-19",
+      "is_correct": true,
+      "confidence": 0.4002792537212372,
+      "uncertainty": 0.9573240280151367,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.21338383853435516,
+        "Covid-19": 0.4002792537212372,
+        "Normal": 0.22152701020240784,
+        "Viral Pneumonia": 0.16480998694896698
+      }
+    },
+    {
+      "index": 292,
+      "filename": "Normal\\NORMAL2-IM-0213-0001.jpeg",
+      "actual": "Normal",
+      "predicted": "Covid-19",
+      "is_correct": false,
+      "confidence": 0.3584323823451996,
+      "uncertainty": 0.9568582773208618,
+      "probabilities": {
+        "Bacterial Pneumonia": 0.14051854610443115,
+        "Covid-19": 0.3584323823451996,
+        "Normal": 0.3018188178539276,
+        "Viral Pneumonia": 0.19923031330108643
+      }
+    }
+  ]
+}
