@@ -206,7 +206,11 @@ class SHAPExplainer:
             image = image / 255.0
         
         # Get colormap
-        cmap = cm.get_cmap('hot')
+        try:
+            from matplotlib import colormaps
+            cmap = colormaps['hot']
+        except ImportError:
+            cmap = cm.get_cmap('hot')
         shap_colored = cmap(shap_values)[:, :, :3]
         
         # Blend

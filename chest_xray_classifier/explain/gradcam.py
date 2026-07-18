@@ -153,7 +153,11 @@ class GradCAM:
             image = image / 255.0
         
         # Get colormap
-        cmap = cm.get_cmap(colormap)
+        try:
+            from matplotlib import colormaps
+            cmap = colormaps[colormap]
+        except ImportError:
+            cmap = cm.get_cmap(colormap)
         heatmap_colored = cmap(heatmap)[:, :, :3]  # Remove alpha channel
         
         # Blend: alpha * heatmap + (1-alpha) * image

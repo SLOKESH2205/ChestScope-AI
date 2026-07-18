@@ -347,7 +347,11 @@ def overlay_heatmap(
     if image.max() > 1.0:
         image = image / 255.0
         
-    cmap = cm.get_cmap(colormap)
+    try:
+        from matplotlib import colormaps
+        cmap = colormaps[colormap]
+    except ImportError:
+        cmap = cm.get_cmap(colormap)
     heatmap_colored = cmap(heatmap)[:, :, :3]
     
     blended = alpha * heatmap_colored + (1.0 - alpha) * image
