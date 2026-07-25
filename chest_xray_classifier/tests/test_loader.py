@@ -21,6 +21,24 @@ class TestDataLoader:
     def loader(self):
         """Create DataLoader instance."""
         return DataLoader()
+        
+    @pytest.fixture(autouse=True)
+    def check_dataset_exists(self, loader):
+        """Skip tests if the dataset structure is invalid or empty (e.g., in CI environments)."""
+        if not loader.verify_dataset_structure():
+            pytest.skip("Dataset structure is not valid / dataset is missing.")
+            
+        # Check if there is at least one image in train classes to ensure we have images
+        has_images = False
+        for class_name in loader.config.classes:
+            class_dir = loader.config.train_dir / class_name
+            if class_dir.exists():
+                imgs = list(class_dir.glob('*.jp*')) + list(class_dir.glob('*.png'))
+                if len(imgs) > 0:
+                    has_images = True
+                    break
+        if not has_images:
+            pytest.skip("Dataset contains 0 images.")
     
     # ===== Generator Tests =====
     
